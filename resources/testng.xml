@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="NopCommerce Automcation Test">
 
-    <test name="Run On Chrome Browser">
+    <test name="Run On FireFox Browser">
         <classes>
-            <class name="com.nopcommerce.users.User_01_Register_login" />
+            <class name="com.nopcommerce.users.Level_01_Repeat_Yourself" />
         </classes>
     </test>
 
