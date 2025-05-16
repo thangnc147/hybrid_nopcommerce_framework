@@ -1,19 +1,14 @@
 package com.nopcommerce.users;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.File;
+
 import java.time.Duration;
 import java.util.Random;
 
@@ -57,7 +52,7 @@ public class Level_01_Repeat_Yourself {
         driver.findElement(By.cssSelector("button#register-button")).click();
 
         Assert.assertEquals(driver.findElement(By.cssSelector("div.result")).getText(), "Your registration completed");
-
+System.out.println();
         driver.findElement(By.cssSelector("a.ico-logout")).click();
     }
 
