@@ -52,7 +52,7 @@ public class Level_01_Repeat_Yourself {
         driver.findElement(By.cssSelector("button#register-button")).click();
 
         Assert.assertEquals(driver.findElement(By.cssSelector("div.result")).getText(), "Your registration completed");
-System.out.println();
+
         driver.findElement(By.cssSelector("a.ico-logout")).click();
     }
 
