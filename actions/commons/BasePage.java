@@ -223,6 +223,18 @@ public class BasePage {
         new Actions(driver).moveToElement(getElement(driver,locator)).perform();
     }
 
+    public void clickToElementByAction(WebDriver driver, String locator) {
+        new Actions(driver).click(getElement(driver,locator)).perform();
+    }
+
+    public void clickAndHoldElementByAction(WebDriver driver, String locator) {
+        new Actions(driver).clickAndHold(getElement(driver,locator)).perform();
+    }
+
+    public void releaseLeftMouseByAction(WebDriver driver) {
+        new Actions(driver).release().perform();
+    }
+
     public void rightClick(WebDriver driver, String locator) {
         new Actions(driver).contextClick(getElement(driver, locator)).perform();
     }
