@@ -148,12 +148,10 @@ public class BasePage {
 
     public void selectItemInCustomDropdown(WebDriver driver, String parentLocator, String childItemLocator, String expectedItem) {
         getElement(driver, parentLocator).click();
-        sleepInSeconds(2);
 
         List<WebElement> allItems = new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childItemLocator)));
 
-        sleepInSeconds(1);
         for (WebElement item : allItems) {
             if (item.getText().trim().equals(expectedItem)) {
                 item.click();
@@ -298,7 +296,6 @@ public class BasePage {
         WebElement element = getElement(driver, locator);
         String originalStyle = element.getAttribute("style");
         ((JavascriptExecutor) driver).executeScript ("arguments[0].setAttribute('style', arguments[1])", element, "border: 2px solid red; border-style: dashed;");
-        sleepInSeconds ( 2);
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('style', arguments [1])", element, originalStyle);
     }
 
@@ -382,17 +379,5 @@ public class BasePage {
 
     public void waitForAlertPresence(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
-    }
-
-    public static void quit(WebDriver driver) {
-        driver.quit();
-    }
-
-    public void sleepInSeconds(long timeInSecond) {
-        try {
-            Thread.sleep(timeInSecond * 1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

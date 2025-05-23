@@ -3,8 +3,23 @@
 <suite name="NopCommerce Automcation Test">
 
     <test name="Run On FireFox Browser">
+        <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.users.Level_02_BasePage_III_Inheritance" />
+            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
+        </classes>
+    </test>
+
+    <test name="Run On Chrome Browser">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
+        </classes>
+    </test>
+
+    <test name="Run On Edge Browser">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
         </classes>
     </test>
 
