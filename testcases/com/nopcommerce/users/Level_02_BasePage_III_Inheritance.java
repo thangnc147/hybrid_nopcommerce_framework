@@ -79,7 +79,7 @@ public class Level_02_BasePage_III_Inheritance extends BasePage {
     }
 
     @Test
-    public void TC_03_My_Account() {
+    public void TC_03_Login() {
         waitForElementClickable(driver, "//a[@class='ico-account']");
         clickToElement(driver, "//a[@class='ico-account']");
 

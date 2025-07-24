@@ -82,7 +82,7 @@ public class Level_02_BasePage_I_Initial {
     }
 
     @Test
-    public void TC_03_My_Account() {
+    public void TC_03_Login() {
         basePage.waitForElementClickable(driver, "//a[@class='ico-account']");
         basePage.clickToElement(driver, "//a[@class='ico-account']");
 

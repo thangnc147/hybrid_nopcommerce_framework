@@ -88,7 +88,7 @@ public class Level_03_Base_Object_Pattern extends BasePage {
     }
 
     @Test
-    public void TC_03_My_Account() {
+    public void TC_03_Login() {
         homePage.clickToMyAccountLink();
 
         // From Register Page to Login Page

@@ -68,7 +68,7 @@ public class Level_01_Repeat_Yourself {
     }
 
     @Test
-    public void TC_03_My_Account() {
+    public void TC_03_Login() {
         driver.findElement(By.cssSelector("a.ico-account")).click();
 
         Assert.assertTrue(driver.findElement(By.cssSelector("input#gender-male")).isSelected());
