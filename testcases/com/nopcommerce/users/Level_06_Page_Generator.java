@@ -1,37 +1,33 @@
 package com.nopcommerce.users;
 
-import commons.BasePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+import commons.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.CustomerInfoPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.RegisterPageObject;
 
-import java.time.Duration;
 import java.util.Random;
 
-public class Level_03_Base_Object_Pattern extends BasePage {
-    private WebDriver driver;
+public class Level_06_Page_Generator extends BaseTest {
+//    private WebDriver driver;
     private HomePageObject homePage;
     private LoginPageObject loginPage;
     private RegisterPageObject registerPage;
     private CustomerInfoPageObject customerInfoPage;
     String firstName, lastName, day, month, year, emailAddress, companyName, password;
 
+    @Parameters("browser")
     @BeforeClass
-    public void beforeClass() {
-        driver = new EdgeDriver();
+    public void beforeClass(String browserName) {
+
+        driver = getBrowserDriver(browserName);
 
         homePage = new HomePageObject(driver);
-
-        driver.get("http://demo.nopcommerce/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
         firstName = "Thang";
         lastName = "Nguyen";
@@ -53,7 +49,6 @@ public class Level_03_Base_Object_Pattern extends BasePage {
         registerPage = new RegisterPageObject(driver);
 
         registerPage.clickToMaleRadio();
-
         registerPage.enterToFirstNameTextbox(firstName);
         registerPage.enterToLastNameTextbox(lastName);
 //        registerPage.selectDayDropdown("");
@@ -95,7 +90,6 @@ public class Level_03_Base_Object_Pattern extends BasePage {
         customerInfoPage = new CustomerInfoPageObject(driver);
 
         Assert.assertTrue(customerInfoPage.isGenderMaleSelected());
-
         Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
         Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
         Assert.assertEquals(customerInfoPage.getCompanyTextboxValue(), companyName);
@@ -110,11 +104,4 @@ public class Level_03_Base_Object_Pattern extends BasePage {
         return new Random().nextInt(99999);
     }
 
-    public void sleepInSeconds(long timeInSecond) {
-        try {
-            Thread.sleep(timeInSecond * 1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

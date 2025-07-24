@@ -84,7 +84,7 @@ public class Level_05_PageFactory extends BaseTest {
     }
 
     @Test
-    public void TC_03_Login() {
+    public void TC_03_My_Account() {
         homePage.clickToMyAccountLink();
 
         // From Register Page to Login Page

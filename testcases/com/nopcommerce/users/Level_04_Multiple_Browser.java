@@ -90,7 +90,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
     }
 
     @Test
-    public void TC_03_Login() {
+    public void TC_03_My_Account() {
         homePage.clickToMyAccountLink();
 
         // From Register Page to Login Page
