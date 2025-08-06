@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import pageObjects.*;
+import pageUIs.BasePageUI;
 
 import java.sql.Driver;
 import java.time.Duration;
@@ -331,20 +333,6 @@ public class BasePage {
                 .executeScript("return arguments[0].validationMessage", getElement(driver, locator));
     }
 
-//    public void waitToJQueryAndJSLoadedSuccessByJS(WebDriver driver, String locator) {
-//
-//    }
-//
-//    public void checkCheckboxByJS(WebDriver driver, String locator) {
-//
-//    }
-//
-//    public void uncheckCheckboxByJS(WebDriver driver, String locator) {
-//
-//    }
-
-    // Wait Section
-
     public void waitForElementVisible(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
     }
@@ -379,5 +367,29 @@ public class BasePage {
 
     public void waitForAlertPresence(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
+    }
+
+    public RewardPointPageObject openRewardPointPage(WebDriver driver) {
+        waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
+        clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
+        return PageGenerator.getRewardPointPage(driver);
+    }
+
+    public AddressPageObject openAddressPage(WebDriver driver) {
+        waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
+        clickToElement(driver, BasePageUI.ADDRESS_LINK);
+        return PageGenerator.getAddressPage(driver);
+    }
+
+    public OrderPageObject openOrderPage(WebDriver driver) {
+        waitForElementClickable(driver, BasePageUI.ORDER_LINK);
+        clickToElement(driver, BasePageUI.ORDER_LINK);
+        return PageGenerator.getOrderPage(driver);
+    }
+
+    public CustomerInfoPageObject openCustomerInfoPage(WebDriver driver) {
+        waitForElementClickable(driver, BasePageUI.CUSTOMER_INFO_LINK);
+        clickToElement(driver, BasePageUI.CUSTOMER_INFO_LINK);
+        return PageGenerator.getCustomerInfoPage(driver);
     }
 }
