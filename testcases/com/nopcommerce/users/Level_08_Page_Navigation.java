@@ -7,16 +7,22 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
+import pageObjects.sidebar.AddressPageObject;
 import pageObjects.sidebar.CustomerInfoPageObject;
+import pageObjects.sidebar.OrderPageObject;
+import pageObjects.sidebar.RewardPointPageObject;
 
 import java.util.Random;
 
-public class Level_06_Page_Generator_III extends BaseTest {
+public class Level_08_Page_Navigation extends BaseTest {
 //    private WebDriver driver;
     private HomePageObject homePage;
     private LoginPageObject loginPage;
     private RegisterPageObject registerPage;
     private CustomerInfoPageObject customerInfoPage;
+    private AddressPageObject addressPage;
+    private OrderPageObject orderPage;
+    private RewardPointPageObject rewardPointPage;
     String firstName, lastName, day, month, year, emailAddress, companyName, password;
 
     @Parameters("browser")
@@ -76,6 +82,25 @@ public class Level_06_Page_Generator_III extends BaseTest {
         Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
         Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
         Assert.assertEquals(customerInfoPage.getCompanyTextboxValue(), companyName);
+    }
+
+    @Test
+    public void TC_04_Swicth_Page() {
+        // Customer Info -> Address
+        addressPage = customerInfoPage.openAddressPage();
+
+        // Address - > Reward Point
+        rewardPointPage = addressPage.openRewardPointPage();
+
+        // Reward Point -> Order
+        orderPage = rewardPointPage.openOrderPage();
+
+        // Order -> Address
+        addressPage = orderPage.openAddressPage();
+
+        // Address -> Customer Info
+        customerInfoPage = addressPage.openCustomerInfoPage();
+
     }
 
     @AfterClass

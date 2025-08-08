@@ -6,9 +6,6 @@ import pageUIs.LoginPageUI;
 
 public class LoginPageObject extends BasePage {
     private WebDriver driver;
-//    private String emailAddress = LoginPageUI.EMAIL_TEXTBOX;
-//    private String password = LoginPageUI.PASSWORD_TEXTBOX;
-
 
     public LoginPageObject(WebDriver driver) {
         this.driver = driver;
