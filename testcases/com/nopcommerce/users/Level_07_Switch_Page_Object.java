@@ -7,22 +7,25 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
-import pageObjects.sidebar.AddressPageObject;
-import pageObjects.sidebar.CustomerInfoPageObject;
-import pageObjects.sidebar.OrderPageObject;
-import pageObjects.sidebar.RewardPointPageObject;
+import pageObjects.externalUser.UserHomePO;
+import pageObjects.externalUser.UserLoginPageObject;
+import pageObjects.externalUser.UserRegisterPO;
+import pageObjects.externalUser.sidebar.UserAddressPO;
+import pageObjects.externalUser.sidebar.UserCustomerInfoPO;
+import pageObjects.externalUser.sidebar.UserOrderPageObject;
+import pageObjects.externalUser.sidebar.UserRewardPointPO;
 
 import java.util.Random;
 
 public class Level_07_Switch_Page_Object extends BaseTest {
 //    private WebDriver driver;
-    private HomePageObject homePage;
-    private LoginPageObject loginPage;
-    private RegisterPageObject registerPage;
-    private CustomerInfoPageObject customerInfoPage;
-    private AddressPageObject addressPage;
-    private OrderPageObject orderPage;
-    private RewardPointPageObject rewardPointPage;
+    private UserHomePO homePage;
+    private UserLoginPageObject loginPage;
+    private UserRegisterPO registerPage;
+    private UserCustomerInfoPO customerInfoPage;
+    private UserAddressPO addressPage;
+    private UserOrderPageObject orderPage;
+    private UserRewardPointPO rewardPointPage;
     String firstName, lastName, day, month, year, emailAddress, companyName, password;
 
     @Parameters("browser")
@@ -31,7 +34,7 @@ public class Level_07_Switch_Page_Object extends BaseTest {
 
         driver = getBrowserDriver(browserName);
 
-        homePage = PageGenerator.getHomePage(driver);
+        homePage = PageGenerator.getUserHomePage(driver);
 
         firstName = "Thang";
         lastName = "Nguyen";

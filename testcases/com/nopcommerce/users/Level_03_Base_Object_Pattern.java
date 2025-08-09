@@ -7,27 +7,27 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.sidebar.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.externalUser.sidebar.UserCustomerInfoPO;
+import pageObjects.externalUser.UserHomePO;
+import pageObjects.externalUser.UserLoginPageObject;
+import pageObjects.externalUser.UserRegisterPO;
 
 import java.time.Duration;
 import java.util.Random;
 
 public class Level_03_Base_Object_Pattern extends BasePage {
     private WebDriver driver;
-    private HomePageObject homePage;
-    private LoginPageObject loginPage;
-    private RegisterPageObject registerPage;
-    private CustomerInfoPageObject customerInfoPage;
+    private UserHomePO homePage;
+    private UserLoginPageObject loginPage;
+    private UserRegisterPO registerPage;
+    private UserCustomerInfoPO customerInfoPage;
     String firstName, lastName, day, month, year, emailAddress, companyName, password;
 
     @BeforeClass
     public void beforeClass() {
         driver = new EdgeDriver();
 
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
 
         driver.get("http://demo.nopcommerce/");
         driver.manage().window().maximize();
@@ -50,7 +50,7 @@ public class Level_03_Base_Object_Pattern extends BasePage {
         homePage.clickToRegisterLink();
 
         // From Home Page to Register Page
-        registerPage = new RegisterPageObject(driver);
+        registerPage = new UserRegisterPO(driver);
 
         registerPage.clickToMaleRadio();
 
@@ -75,14 +75,14 @@ public class Level_03_Base_Object_Pattern extends BasePage {
         registerPage.clickTLoginButton();
 
         // From Register Page to Login Page
-        loginPage = new LoginPageObject(driver);
+        loginPage = new UserLoginPageObject(driver);
 
         loginPage.enterToEmailTextbox(emailAddress);
         loginPage.enterToPasswordTextbox(password);
         loginPage.clickTLoginButton();
 
         // From Login Page to Home Page
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
 
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
     }
@@ -92,7 +92,7 @@ public class Level_03_Base_Object_Pattern extends BasePage {
         homePage.clickToMyAccountLink();
 
         // From Register Page to Login Page
-        customerInfoPage = new CustomerInfoPageObject(driver);
+        customerInfoPage = new UserCustomerInfoPO(driver);
 
         Assert.assertTrue(customerInfoPage.isGenderMaleSelected());
 

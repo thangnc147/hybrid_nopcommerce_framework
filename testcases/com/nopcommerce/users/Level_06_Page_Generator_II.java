@@ -6,19 +6,19 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.sidebar.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.externalUser.sidebar.UserCustomerInfoPO;
+import pageObjects.externalUser.UserHomePO;
+import pageObjects.externalUser.UserLoginPageObject;
+import pageObjects.externalUser.UserRegisterPO;
 
 import java.util.Random;
 
 public class Level_06_Page_Generator_II extends BaseTest {
 //    private WebDriver driver;
-    private HomePageObject homePage;
-    private LoginPageObject loginPage;
-    private RegisterPageObject registerPage;
-    private CustomerInfoPageObject customerInfoPage;
+    private UserHomePO homePage;
+    private UserLoginPageObject loginPage;
+    private UserRegisterPO registerPage;
+    private UserCustomerInfoPO customerInfoPage;
     String firstName, lastName, day, month, year, emailAddress, companyName, password;
 
     @Parameters("browser")
@@ -27,7 +27,7 @@ public class Level_06_Page_Generator_II extends BaseTest {
 
         driver = getBrowserDriver(browserName);
 
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
 
         firstName = "Thang";
         lastName = "Nguyen";

@@ -6,19 +6,19 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.sidebar.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.externalUser.sidebar.UserCustomerInfoPO;
+import pageObjects.externalUser.UserHomePO;
+import pageObjects.externalUser.UserLoginPageObject;
+import pageObjects.externalUser.UserRegisterPO;
 
 import java.util.Random;
 
 public class Level_04_Multiple_Browser extends BaseTest {
 //    private WebDriver driver;
-    private HomePageObject homePage;
-    private LoginPageObject loginPage;
-    private RegisterPageObject registerPage;
-    private CustomerInfoPageObject customerInfoPage;
+    private UserHomePO homePage;
+    private UserLoginPageObject loginPage;
+    private UserRegisterPO registerPage;
+    private UserCustomerInfoPO customerInfoPage;
     String firstName, lastName, day, month, year, emailAddress, companyName, password;
 
     @Parameters("browser")
@@ -27,7 +27,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 
         driver = getBrowserDriver(browserName);
 
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
 
         firstName = "Thang";
         lastName = "Nguyen";
@@ -46,7 +46,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
         homePage.clickToRegisterLink();
 
         // From Home Page to Register Page
-        registerPage = new RegisterPageObject(driver);
+        registerPage = new UserRegisterPO(driver);
 
         registerPage.clickToMaleRadio();
 
@@ -71,14 +71,14 @@ public class Level_04_Multiple_Browser extends BaseTest {
         registerPage.clickTLoginButton();
 
         // From Register Page to Login Page
-        loginPage = new LoginPageObject(driver);
+        loginPage = new UserLoginPageObject(driver);
 
         loginPage.enterToEmailTextbox(emailAddress);
         loginPage.enterToPasswordTextbox(password);
         loginPage.clickTLoginButton();
 
         // From Login Page to Home Page
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
 
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
     }
@@ -88,7 +88,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
         homePage.clickToMyAccountLink();
 
         // From Register Page to Login Page
-        customerInfoPage = new CustomerInfoPageObject(driver);
+        customerInfoPage = new UserCustomerInfoPO(driver);
 
         Assert.assertTrue(customerInfoPage.isGenderMaleSelected());
 

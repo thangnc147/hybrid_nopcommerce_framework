@@ -1,0 +1,93 @@
+package pageObjects.externalUser;
+
+import commons.BasePage;
+import org.openqa.selenium.WebDriver;
+import pageObjects.PageGenerator;
+import pageUIs.externalUser.UserRegisterPageUI;
+
+public class UserRegisterPO extends BasePage {
+    private WebDriver driver;
+
+    public UserRegisterPO(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void clickToMaleRadio() {
+        waitForElementClickable(driver, UserRegisterPageUI.GENDER_MALE_RADIO);
+        clickToElement(driver, UserRegisterPageUI.GENDER_MALE_RADIO);
+    }
+
+    public void enterToFirstNameTextbox(String firstName) {
+        waitForElementVisible(driver, UserRegisterPageUI.FIRST_NAME_TEXTBOX);
+        sendkeyToElement(driver, UserRegisterPageUI.FIRST_NAME_TEXTBOX, firstName);
+    }
+
+    public void enterToLastNameTextbox(String lastName) {
+        waitForElementVisible(driver, UserRegisterPageUI.LAST_NAME_TEXTBOX);
+        sendkeyToElement(driver, UserRegisterPageUI.LAST_NAME_TEXTBOX, lastName);
+    }
+
+//    public void selectDayDropdown(String day) {
+//        waitForElementClickable(driver, RegisterPageUI.DAY_DROPDOWN);
+//        selectItemInDropdown(driver, RegisterPageUI.DAY_DROPDOWN, day);
+//    }
+//
+//    public void selectMonthDropdown(String month) {
+//        waitForElementClickable(driver, RegisterPageUI.MONTH_DROPDOWN);
+//        selectItemInDropdown(driver, RegisterPageUI.MONTH_DROPDOWN, month);
+//    }
+//
+//    public void selectYearDropdown(String year) {
+//        waitForElementClickable(driver, RegisterPageUI.YEAR_DROPDOWN);
+//        selectItemInDropdown(driver, RegisterPageUI.YEAR_DROPDOWN, year);
+//    }
+
+    public void enterToEmailTextbox(String emailAddress) {
+        waitForElementVisible(driver, UserRegisterPageUI.EMAIL_TEXTBOX);
+        sendkeyToElement(driver, UserRegisterPageUI.EMAIL_TEXTBOX, emailAddress);
+    }
+
+    public void enterToCompanyTextbox(String companyName) {
+        waitForElementVisible(driver, UserRegisterPageUI.COMPANY_NAME_TEXTBOX);
+        sendkeyToElement(driver, UserRegisterPageUI.COMPANY_NAME_TEXTBOX, companyName);
+    }
+
+    public void enterToPasswordTextbox(String password) {
+        waitForElementVisible(driver, UserRegisterPageUI.PASSWORD_TEXTBOX);
+        sendkeyToElement(driver, UserRegisterPageUI.PASSWORD_TEXTBOX, password);
+    }
+
+    public void enterToConfirmPasswordTextbox(String password) {
+        waitForElementVisible(driver, UserRegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
+        sendkeyToElement(driver, UserRegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, password);
+    }
+
+    public void clickTRegisterButton() {
+        waitForElementClickable(driver, UserRegisterPageUI.REGISTER_BUTTON);
+        clickToElement(driver, UserRegisterPageUI.REGISTER_BUTTON);
+    }
+
+    public String getRegisterSuccessMessage() {
+        return getElementText(driver, UserRegisterPageUI.REGISTER_SUCCESS_MESSAGE);
+    }
+
+    public void clickTLogoutButton() {
+        waitForElementClickable(driver, UserRegisterPageUI.LOGOUT_LINK);
+        clickToElement(driver, UserRegisterPageUI.LOGOUT_LINK);
+    }
+
+    public UserHomePO clickTLogoutLink() {
+        waitForElementClickable(driver, UserRegisterPageUI.LOGOUT_LINK);
+        clickToElement(driver, UserRegisterPageUI.LOGOUT_LINK);
+        return PageGenerator.getUserHomePage(driver);
+    }
+
+    public UserLoginPageObject clickTLoginButton() {
+        waitForElementClickable(driver, UserRegisterPageUI.LOGIN_LINK);
+        clickToElement(driver, UserRegisterPageUI.LOGIN_LINK);
+        return PageGenerator.getUserLoginPage(driver);
+    }
+
+
+
+}

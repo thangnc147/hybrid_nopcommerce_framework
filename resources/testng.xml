@@ -2,31 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="NopCommerce Automcation Test">
 
-<!--    <test name="Run On FireFox Browser">-->
-<!--        <parameter name="browser" value="firefox"/>-->
-<!--        <classes>-->
-<!--            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Run On Chrome Browser">-->
-<!--        <parameter name="browser" value="chrome"/>-->
-<!--        <classes>-->
-<!--            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Run On Edge Browser">-->
-<!--        <parameter name="browser" value="edge"/>-->
-<!--        <classes>-->
-<!--            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <parameter name="userUrl" value="http://localhost/"/>
+    <parameter name="adminUrl" value="http://localhost/admin"/>
 
     <test name="Page Factory">
         <parameter name="browser" value="edge"/>
         <classes>
-            <class name="com.nopcommerce.users.Level_07_Switch_Page_Object" />
+            <class name="com.nopcommerce.users.Level_09_Switch_Site_URL" />
         </classes>
     </test>
 
