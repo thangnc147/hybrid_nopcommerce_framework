@@ -1,4 +1,50 @@
 package commons;
 
 public class GlobalConstants {
+    // System Info
+    public static final String PROJECT_PATH = System.getProperty("user.dir");
+    public static final String OS_NAME = System.getProperty("os.name");
+
+    // App Info: User
+    public static final String DEV_USER_URL = "http://dev.techpanda.org/";
+    public static final String STAGING_USER_URL = "http://staging.techpanda.org/";
+    public static final String LIVE_USER_URL = "http://liv.techpanda.org/";
+
+
+
+    // App Info: Admin
+    public static final String DEV_ADMIN_URL = "http://dev.techpanda.org/";
+    public static final String STAGING_ADMIN_URL = "http://staging.techpanda.org/";
+    public static final String LIVE_ADMIN_URL = "http://liv.techpanda.org/";
+
+    public static final String ADMIN_USERNAME = "";
+    public static final String ADMIN_PASSWORD = "";
+
+
+    // Wait Info
+    public static final long SHORT_TIMEOUT = 10;
+    public static final long LONG_TIMEOUT = 30;
+
+
+    // Download-Upload file
+    public static final String UPLOAD_PATH = PROJECT_PATH + "/uploadFiles/";
+    public static final String DOWNLOAD_PATH = PROJECT_PATH + "/downloadFiles/";
+
+
+    // Retry Case Failed
+    public static final int RETRY_NUMBER = 3;
+
+    // Browser Logs/ Extention
+    public static final String BROWSER_LOG_PATH = PROJECT_PATH + "/browserLogs/";
+    public static final String BROWSER_EXTENTION_PATH = PROJECT_PATH + "/browserExtentions/";
+
+
+    // HTML Report Folder
+    public static final String REPORTING_PATH = PROJECT_PATH + "/htmlReportNG/";
+    public static final String EXTENT_PATH = PROJECT_PATH + "/htmlExtent/";
+    public static final String ALLURE_PATH = PROJECT_PATH + "/htmlAllure/";
+
+    // Data Test/ Environment
+    public static final String DATA_TEST_PATH = PROJECT_PATH + "/dataTest/";
+    public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + "/environmentConfig/";
 }
