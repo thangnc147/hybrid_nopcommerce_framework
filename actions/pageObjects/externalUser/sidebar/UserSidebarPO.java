@@ -35,4 +35,27 @@ public class UserSidebarPO extends BasePage {
         clickToElement(driver, UserSidebarPageUI.CUSTOMER_INFO_LINK);
         return PageGenerator.getUserCustomerInfoPage(driver);
     }
+
+    public UserSidebarPO openSidebarLinkByPageName(String pageName) {
+        waitForElementClickable(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
+        clickToElement(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
+
+        switch (pageName) {
+            case "Addresses":
+                return PageGenerator.getUserAddressPage(driver);
+            case "Reward points":
+                return PageGenerator.getUserRewardPointPage(driver);
+            case "Customer info":
+                return PageGenerator.getUserCustomerInfoPage(driver);
+            case "Orders":
+                return PageGenerator.getUserOrderPage(driver);
+            default:
+                throw new RuntimeException("Page name is not valid!");
+        }
+    }
+
+    public void openSidebarLinkByPageNames(String pageName) {
+        waitForElementClickable(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
+        clickToElement(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
+    }
 }
