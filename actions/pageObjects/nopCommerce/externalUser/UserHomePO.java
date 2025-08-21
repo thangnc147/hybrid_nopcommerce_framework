@@ -1,12 +1,11 @@
-package pageObjects.externalUser;
+package pageObjects.nopCommerce.externalUser;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageObjects.PageGenerator;
-import pageObjects.externalUser.sidebar.UserCustomerInfoPO;
-import pageUIs.externalUser.UserHomePageUI;
-import pageUIs.externalUser.UserRegisterPageUI;
-import pageUIs.externalUser.UserSidebarPageUI;
+import pageObjects.nopCommerce.PageGenerator;
+import pageObjects.nopCommerce.externalUser.sidebar.UserCustomerInfoPO;
+import pageUIs.nopCommerce.externalUser.UserHomePageUI;
+import pageUIs.nopCommerce.externalUser.UserRegisterPageUI;
 
 public class UserHomePO extends BasePage {
     private WebDriver driver;
@@ -37,5 +36,4 @@ public class UserHomePO extends BasePage {
         clickToElement(driver, UserRegisterPageUI.LOGIN_LINK);
         return PageGenerator.getUserLoginPage(driver);
     }
-
 }

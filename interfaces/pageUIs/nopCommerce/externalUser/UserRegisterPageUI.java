@@ -1,4 +1,4 @@
-package pageUIs.externalUser;
+package pageUIs.nopCommerce.externalUser;
 
 public class UserRegisterPageUI {
     public static final String GENDER_MALE_RADIO = "id=gender-male";

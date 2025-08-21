@@ -1,4 +1,4 @@
-package pageObjects.externalUser.sidebar;
+package pageObjects.nopCommerce.externalUser.sidebar;
 
 import org.openqa.selenium.WebDriver;
 

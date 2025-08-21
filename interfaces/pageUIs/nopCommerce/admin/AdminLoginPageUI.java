@@ -1,4 +1,4 @@
-package pageUIs.admin;
+package pageUIs.nopCommerce.admin;
 
 public class AdminLoginPageUI {
     public static final String ADMIN_EMAIL_TEXTBOX = "id=Email";

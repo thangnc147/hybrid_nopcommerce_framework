@@ -1,4 +1,4 @@
-package pageUIs.externalUser;
+package pageUIs.nopCommerce.externalUser;
 
 public class UserSidebarPageUI {
     public static final String ADDRESS_LINK = "xpath=//div[@id='main']//a[text()='Addresses']";

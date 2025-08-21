@@ -1,4 +1,4 @@
-package pageUIs.externalUser;
+package pageUIs.nopCommerce.externalUser;
 
 public class UserLoginPageUI {
     public static final String EMAIL_TEXTBOX = "id=Email";

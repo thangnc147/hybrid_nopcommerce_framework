@@ -6,11 +6,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.*;
-import pageObjects.externalUser.UserHomePO;
-import pageObjects.externalUser.UserLoginPageObject;
-import pageObjects.externalUser.UserRegisterPO;
-import pageObjects.externalUser.sidebar.UserCustomerInfoPO;
+import pageObjects.nopCommerce.PageGenerator;
+import pageObjects.nopCommerce.externalUser.UserHomePO;
+import pageObjects.nopCommerce.externalUser.UserLoginPageObject;
+import pageObjects.nopCommerce.externalUser.UserRegisterPO;
+import pageObjects.nopCommerce.externalUser.sidebar.UserCustomerInfoPO;
 
 import java.util.Random;
 

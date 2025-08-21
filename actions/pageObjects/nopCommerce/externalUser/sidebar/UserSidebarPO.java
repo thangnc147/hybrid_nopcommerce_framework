@@ -1,9 +1,9 @@
-package pageObjects.externalUser.sidebar;
+package pageObjects.nopCommerce.externalUser.sidebar;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageObjects.PageGenerator;
-import pageUIs.externalUser.UserSidebarPageUI;
+import pageObjects.nopCommerce.PageGenerator;
+import pageUIs.nopCommerce.externalUser.UserSidebarPageUI;
 
 public class UserSidebarPO extends BasePage {
     private WebDriver driver;

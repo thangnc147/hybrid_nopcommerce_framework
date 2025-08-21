@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class BasePageUI {
     public static final String ADDRESS_LINK = "//div[@id='main']//a[text()='Addresses']";

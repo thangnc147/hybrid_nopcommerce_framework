@@ -1,4 +1,4 @@
-package pageUIs.externalUser;
+package pageUIs.nopCommerce.externalUser;
 
 public class UserHomePageUI {
     public static final String REGISTER_LINK = "class=ico-register";
