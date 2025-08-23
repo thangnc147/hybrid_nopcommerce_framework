@@ -148,8 +148,12 @@ public class BasePage{
         return driver.findElement(getByLocator(locator));
     }
 
-    protected List<WebElement> getElements(WebDriver driver, String locator) {
+    protected List<WebElement> getListElements(WebDriver driver, String locator) {
         return driver.findElements(getByLocator(locator));
+    }
+
+    protected List<WebElement> getListElements(WebDriver driver, String locator, String... restParameter) {
+        return driver.findElements(getByLocator(castParameter(locator, restParameter)));
     }
 
     public void clickToElement(WebDriver driver, String locator) {
@@ -170,6 +174,11 @@ public class BasePage{
 
     public void selectItemInDropdown(WebDriver driver, String dropdownLocator, String expectedItem) {
         new Select(getElement(driver, dropdownLocator))
+                .selectByVisibleText(expectedItem);
+    }
+
+    public void selectItemInDropdown(WebDriver driver, String dropdownLocator, String expectedItem, String... restParameter) {
+        new Select(getElement(driver, castParameter(dropdownLocator, restParameter)))
                 .selectByVisibleText(expectedItem);
     }
 
@@ -222,7 +231,7 @@ public class BasePage{
     }
 
     public int getListNumberOfElements(WebDriver driver, String locator) {
-        return getElements(driver, locator).size();
+        return getListElements(driver, locator).size();
     }
 
     public void checkTheCheckboxOrRadio(WebDriver driver, String locator) {
@@ -231,9 +240,21 @@ public class BasePage{
         }
     }
 
+    public void checkTheCheckboxOrRadio(WebDriver driver, String locator, String... restParameter) {
+        if(!getElement(driver, castParameter(locator, restParameter)).isSelected()) {
+            getElement(driver, castParameter(locator, restParameter)).click();
+        }
+    }
+
     public void unheckTheCheckbox(WebDriver driver, String locator) {
         if(getElement(driver, locator).isSelected()) {
             getElement(driver, locator).click();
+        }
+    }
+
+    public void unheckTheCheckbox(WebDriver driver, String locator, String... restParameter) {
+        if(getElement(driver, castParameter(locator, restParameter)).isSelected()) {
+            getElement(driver, castParameter(locator, restParameter)).click();
         }
     }
 

@@ -74,7 +74,32 @@ public class Level_11_DataTable extends BaseTest {
     }
 
     @Test
-    public void TC_04_Table() {
+    public void TC_04_Table_Get_All_Value_Row_Or_Column() {
+        homePage.getAllValueOfColumn("Country");
+        System.out.println(homePage.getAllValueOfColumn("Country"));
+
+        homePage.getAllValueOfRow("5");
+        System.out.println(homePage.getAllValueOfRow("5"));
+    }
+
+    @Test
+    public void TC_05_Table_Action_By_Index() {
+        homePage.openPageUrl(driver, "https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/");
+
+        homePage.clickToLoadDataButton();
+
+        homePage.enterToTextboxByIndex("4", "Contact Person", "Thang Nguyen");
+        homePage.enterToTextboxByIndex("2", "Company", "Leo Nguyen");
+
+        homePage.selectToDropdownByIndex("6", "Country", "Hong Kong");
+        homePage.selectToDropdownByIndex("8", "Country", "United States");
+
+        homePage.checkToCheckboxByIndex("5", "NPO?", false);
+        homePage.checkToCheckboxByIndex("6", "NPO?", true);
+
+        homePage.clickToIconByIndex("8", "Move Up");
+        homePage.clickToIconByIndex("3", "Remove");
+        homePage.clickToIconByIndex("4", "Insert");
 
     }
 
