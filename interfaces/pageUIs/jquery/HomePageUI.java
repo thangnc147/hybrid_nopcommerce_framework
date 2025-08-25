@@ -25,4 +25,8 @@ public class HomePageUI {
     public static final String ALL_VALUE_BY_COLUMN_INDEX = "xpath=//td[%s]";
     public static final String ALL_VALUE_BY_ROW_INDEX = "xpath=//tr[%s]/td";
 
+    public static final String UPLOAD_FILE_TYPE = "css=input[type='file']";
+    public static final String FILE_LOADED_BY_FILE_NAME = "xpath=//p[@class='name' and text()='%s']";
+    public static final String UPLOAD_BUTTON = "css=td>button.start";
+    public static final String FILE_UPLOADED_BY_FILE_NAME = "xpath=//p[@class='name']/a[@title='%s']";
 }

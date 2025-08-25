@@ -11,13 +11,14 @@ import pageObjects.nopCommerce.externalUser.sidebar.UserAddressPO;
 import pageObjects.nopCommerce.externalUser.sidebar.UserCustomerInfoPO;
 import pageObjects.nopCommerce.externalUser.sidebar.UserOrderPageObject;
 import pageObjects.nopCommerce.externalUser.sidebar.UserRewardPointPO;
+import pageUIs.jquery.HomePageUI;
 import pageUIs.nopCommerce.externalUser.UserSidebarPageUI;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
-public class BasePage{
+public class BasePage {
     // Map Driver
 //    private WebDriver driver;
 //    public BasePage(WebDriver driver) {
@@ -479,4 +480,15 @@ public class BasePage{
         clickToElement(driver, UserSidebarPageUI.CUSTOMER_INFO_LINK);
         return PageGenerator.getUserCustomerInfoPage(driver);
     }
+
+    public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+        String filePath = GlobalConstants.UPLOAD_PATH;
+        String fullFileName = "";
+        for (String file : fileNames) {
+            fullFileName = fullFileName + filePath + file + "\n";
+        }
+        fullFileName = fullFileName.trim();
+        getElement(driver, HomePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
+    }
+
 }

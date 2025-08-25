@@ -1,4 +1,4 @@
-package com.nopcommerce.users;
+package com.jquery;
 
 import commons.BaseTest;
 import org.testng.Assert;

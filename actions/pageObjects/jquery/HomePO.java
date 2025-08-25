@@ -126,4 +126,21 @@ public class HomePO extends BasePage {
 
         return allTextValue;
     }
+
+    public boolean isFileLoadedByName(String fileName) {
+        waitForElementVisible(driver, HomePageUI.FILE_LOADED_BY_FILE_NAME, fileName);
+        return isControlDisplayed(driver, HomePageUI.FILE_LOADED_BY_FILE_NAME, fileName);
+    }
+
+    public void clickToUploadButton(WebDriver driver) {
+        List<WebElement> uploadButtons = getListElements(driver, HomePageUI.UPLOAD_BUTTON);
+        for (WebElement button : uploadButtons) {
+            button.click();
+        }
+    }
+
+    public boolean isFileUploadedByName(String fileName) {
+        waitForElementVisible(driver, HomePageUI.FILE_UPLOADED_BY_FILE_NAME, fileName);
+        return isControlDisplayed(driver, HomePageUI.FILE_UPLOADED_BY_FILE_NAME, fileName);
+    }
 }
