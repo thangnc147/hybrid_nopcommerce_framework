@@ -1,9 +1,9 @@
 # Nopcommerce Automation Framework
 
 
-## This repository contains the practice files used throughout the courses that are part of the Fullstack Selenium in Java
+## This repository contains the practice files that are part of the Fullstack Selenium in Java course
 
-This project is an example that was built an Automation Framework from scratch.
+This project is an example of an automation framework built from scratch.
 Every part of this project is sample code that guided me on how to do the following:
 
 * Initial Structure
