@@ -92,11 +92,4 @@ public class Level_01_Repeat_Yourself {
         return new Random().nextInt(99999);
     }
 
-    public void sleepInSeconds(long timeInSecond) {
-        try {
-            Thread.sleep(timeInSecond * 1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

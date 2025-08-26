@@ -2,13 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="NopCommerce Automcation Test">
 
+    <listeners>
+        <listener class-name="commons.MethodListener"></listener>
+    </listeners>
+
     <parameter name="userUrl" value="http://localhost/"/>
     <parameter name="adminUrl" value="http://localhost/admin"/>
 
     <test name="Page Factory">
         <parameter name="browser" value="edge"/>
         <classes>
-            <class name="com.nopcommerce.users.Level_10_Dynamic_Locator" />
+            <class name="com.nopcommerce.users.Level_13_Verify" />
         </classes>
     </test>
 

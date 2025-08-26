@@ -102,8 +102,4 @@ public class Level_05_PageFactory extends BaseTest {
         driver.quit();
     }
 
-    private int generateRandomNumber() {
-        return new Random().nextInt(99999);
-    }
-
 }

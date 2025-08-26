@@ -108,8 +108,4 @@ public class Level_11_DataTable extends BaseTest {
         driver.quit();
     }
 
-    private int generateRandomNumber() {
-        return new Random().nextInt(99999);
-    }
-
 }

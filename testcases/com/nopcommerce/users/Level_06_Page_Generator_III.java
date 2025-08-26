@@ -85,9 +85,4 @@ public class Level_06_Page_Generator_III extends BaseTest {
     public void afterClass() {
         driver.quit();
     }
-
-    private int generateRandomNumber() {
-        return new Random().nextInt(99999);
-    }
-
 }

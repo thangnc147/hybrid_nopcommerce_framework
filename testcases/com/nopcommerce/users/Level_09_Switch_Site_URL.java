@@ -114,8 +114,4 @@ public class Level_09_Switch_Site_URL extends BaseTest {
         driver.quit();
     }
 
-    private int generateRandomNumber() {
-        return new Random().nextInt(99999);
-    }
-
 }

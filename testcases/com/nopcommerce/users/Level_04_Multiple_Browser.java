@@ -102,8 +102,5 @@ public class Level_04_Multiple_Browser extends BaseTest {
         driver.quit();
     }
 
-    private int generateRandomNumber() {
-        return new Random().nextInt(99999);
-    }
 
 }

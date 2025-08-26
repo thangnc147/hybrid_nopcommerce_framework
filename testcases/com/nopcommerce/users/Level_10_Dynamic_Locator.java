@@ -134,8 +134,4 @@ public class Level_10_Dynamic_Locator extends BaseTest {
         driver.quit();
     }
 
-    private int generateRandomNumber() {
-        return new Random().nextInt(99999);
-    }
-
 }

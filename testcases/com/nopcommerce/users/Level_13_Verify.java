@@ -15,17 +15,12 @@ import pageObjects.nopCommerce.externalUser.sidebar.UserCustomerInfoPO;
 import pageObjects.nopCommerce.externalUser.sidebar.UserOrderPageObject;
 import pageObjects.nopCommerce.externalUser.sidebar.UserRewardPointPO;
 
-import java.util.Random;
-
-public class Level_08_Page_Navigation extends BaseTest {
+public class Level_13_Verify extends BaseTest {
 //    private WebDriver driver;
     private UserHomePO homePage;
     private UserLoginPageObject loginPage;
     private UserRegisterPO registerPage;
     private UserCustomerInfoPO customerInfoPage;
-    private UserAddressPO addressPage;
-    private UserOrderPageObject orderPage;
-    private UserRewardPointPO rewardPointPage;
     String firstName, lastName, day, month, year, emailAddress, companyName, password;
 
     @Parameters("browser")
@@ -51,6 +46,8 @@ public class Level_08_Page_Navigation extends BaseTest {
     public void TC_01_Register() {
         registerPage = homePage.clickToRegisterLink();
 
+        verifyEquals(registerPage.getRegisterPageTitle(), "REGISTER");
+
         registerPage.clickToMaleRadio();
 
         registerPage.enterToFirstNameTextbox(firstName);
@@ -61,7 +58,7 @@ public class Level_08_Page_Navigation extends BaseTest {
         registerPage.enterToConfirmPasswordTextbox(password);
         registerPage.clickTRegisterButton();
 
-        Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+        verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
         registerPage.clickTLogoutButton();
     }
@@ -72,7 +69,7 @@ public class Level_08_Page_Navigation extends BaseTest {
 
         homePage = loginPage.loginToSystem(emailAddress, password);
 
-        Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+        verifyTrue(homePage.isMyAccountLinkDisplayed());
 
     }
 
@@ -80,34 +77,14 @@ public class Level_08_Page_Navigation extends BaseTest {
     public void TC_03_My_Account() {
         customerInfoPage = homePage.clickToMyAccountLink();
 
-        Assert.assertTrue(customerInfoPage.isGenderMaleSelected());
-        Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
-        Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
-        Assert.assertEquals(customerInfoPage.getCompanyTextboxValue(), companyName);
-    }
-
-    @Test
-    public void TC_04_Swicth_Page() {
-        // Customer Info -> Address
-        addressPage = customerInfoPage.openAddressPage();
-
-        // Address - > Reward Point
-        rewardPointPage = addressPage.openRewardPointPage();
-
-        // Reward Point -> Order
-        orderPage = rewardPointPage.openOrderPage();
-
-        // Order -> Address
-        addressPage = orderPage.openAddressPage();
-
-        // Address -> Customer Info
-        customerInfoPage = addressPage.openCustomerInfoPage();
-
+        verifyTrue(customerInfoPage.isGenderMaleSelected());
+        verifyEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
+        verifyEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
+        verifyEquals(customerInfoPage.getCompanyTextboxValue(), companyName);
     }
 
     @AfterClass
     public void afterClass() {
         driver.quit();
     }
-
 }

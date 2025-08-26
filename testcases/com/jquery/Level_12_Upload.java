@@ -68,9 +68,4 @@ public class Level_12_Upload extends BaseTest {
     public void afterClass() {
         driver.quit();
     }
-
-    private int generateRandomNumber() {
-        return new Random().nextInt(99999);
-    }
-
 }

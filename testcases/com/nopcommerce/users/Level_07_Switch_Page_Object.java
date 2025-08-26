@@ -111,8 +111,4 @@ public class Level_07_Switch_Page_Object extends BaseTest {
         driver.quit();
     }
 
-    private int generateRandomNumber() {
-        return new Random().nextInt(99999);
-    }
-
 }

@@ -15,9 +15,7 @@ import pageObjects.nopCommerce.externalUser.sidebar.UserCustomerInfoPO;
 import pageObjects.nopCommerce.externalUser.sidebar.UserOrderPageObject;
 import pageObjects.nopCommerce.externalUser.sidebar.UserRewardPointPO;
 
-import java.util.Random;
-
-public class Level_08_Page_Navigation extends BaseTest {
+public class Level_13_Assert extends BaseTest {
 //    private WebDriver driver;
     private UserHomePO homePage;
     private UserLoginPageObject loginPage;
@@ -50,6 +48,8 @@ public class Level_08_Page_Navigation extends BaseTest {
     @Test
     public void TC_01_Register() {
         registerPage = homePage.clickToRegisterLink();
+
+        Assert.assertEquals(registerPage.getRegisterPageTitle(), "REGISTER");
 
         registerPage.clickToMaleRadio();
 
@@ -87,21 +87,45 @@ public class Level_08_Page_Navigation extends BaseTest {
     }
 
     @Test
-    public void TC_04_Swicth_Page() {
+    public void TC_04_Dynamic_Page() {
         // Customer Info -> Address
-        addressPage = customerInfoPage.openAddressPage();
+        addressPage = (UserAddressPO) customerInfoPage.openSidebarLinkByPageName("Addresses");
 
         // Address - > Reward Point
-        rewardPointPage = addressPage.openRewardPointPage();
+        rewardPointPage = (UserRewardPointPO) addressPage.openSidebarLinkByPageName("Reward points");
 
         // Reward Point -> Order
-        orderPage = rewardPointPage.openOrderPage();
+        orderPage = (UserOrderPageObject) rewardPointPage.openSidebarLinkByPageName("Orders");
 
         // Order -> Address
-        addressPage = orderPage.openAddressPage();
+        addressPage = (UserAddressPO) orderPage.openSidebarLinkByPageName("Addresses");
 
         // Address -> Customer Info
-        customerInfoPage = addressPage.openCustomerInfoPage();
+        customerInfoPage = (UserCustomerInfoPO) addressPage.openSidebarLinkByPageName("Customer info");
+
+    }
+
+    @Test
+    public void TC_05_Dynamic_Page() {
+        // Customer Info -> Address
+        customerInfoPage.openSidebarLinkByPageNames("Addresses");
+        addressPage = PageGenerator.getUserAddressPage(driver);
+
+        // Address - > Reward Point
+        addressPage.openSidebarLinkByPageNames("Reward points");
+        rewardPointPage = PageGenerator.getUserRewardPointPage(driver);
+
+        // Reward Point -> Order
+        rewardPointPage.openSidebarLinkByPageName("Orders");
+        orderPage = PageGenerator.getUserOrderPage(driver);
+
+        // Order -> Address
+        orderPage.openSidebarLinkByPageName("Addresses");
+        addressPage = PageGenerator.getUserAddressPage(driver);
+
+        // Address -> Customer Info
+        addressPage.openSidebarLinkByPageName("Customer info");
+        customerInfoPage = PageGenerator.getUserCustomerInfoPage(driver);
 
     }
 
@@ -109,5 +133,4 @@ public class Level_08_Page_Navigation extends BaseTest {
     public void afterClass() {
         driver.quit();
     }
-
 }

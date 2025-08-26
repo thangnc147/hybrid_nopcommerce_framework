@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.Reporter;
 
 import java.time.Duration;
+import java.util.Random;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -63,5 +66,46 @@ public class BaseTest {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int generateRandomNumber() {
+        return new Random().nextInt(99999);
+    }
+
+    protected boolean verifyTrue(boolean condition) {
+        boolean status = true;
+        try {
+            Assert.assertTrue(condition);
+        } catch (Throwable e) {
+            status = false;
+
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return status;
+    }
+
+    protected boolean verifyFalse(boolean condition) {
+        boolean status = true;
+        try {
+            Assert.assertFalse(condition);
+        } catch (Throwable e) {
+            status = false;
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return status;
+    }
+
+    protected boolean verifyEquals(Object actual, Object expected) {
+        boolean status = true;
+        try {
+            Assert.assertEquals(actual, expected);
+        } catch (Throwable e) {
+            status = false;
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return status;
     }
 }
