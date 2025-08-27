@@ -14,7 +14,7 @@ import java.time.Duration;
 public class TestNG_03_Assert_Message {
     @Test
     public void showMessage() {
-        boolean statusGender = false;
+        boolean statusGender = true;
 
         Assert.assertTrue(statusGender, "Gender is not male!!!");
     }

@@ -14,6 +14,11 @@ Every part of this project is sample code that guided me on how to do the follow
 * Dynamic Locator
 * ...and more
 
+## Techstack
+* Selenium WebDriver 4.16.1 for browser automation
+* TestNG 7.8.0 for test execution and parallel testing
+* log4j 5.1.1 for logging
+
 ## Known issues (Work in progress)
 This framework is still ongoing. The Fullstack Selenium in Java course has not been completed yet.
 

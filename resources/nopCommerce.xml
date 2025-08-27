@@ -12,7 +12,7 @@
     <test name="Page Factory">
         <parameter name="browser" value="edge"/>
         <classes>
-            <class name="com.nopcommerce.users.Level_13_Verify" />
+            <class name="com.nopcommerce.users.Level_14_Log4J" />
         </classes>
     </test>
 
