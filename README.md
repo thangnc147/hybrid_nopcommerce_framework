@@ -1,25 +1,40 @@
 # Nopcommerce Automation Framework
+This repository contains the practice files that are part of the Fullstack Selenium in Java course
+## Introduction
+Powered by Java, Selenium with TestNG, and AllureReport, this project aims to validate functionalities including Signup, Login, Order, Search, and Sorting for https://demo.nopcommerce.com/
 
-
-## This repository contains the practice files that are part of the Fullstack Selenium in Java course
-
-This project is an example of an automation framework built from scratch.
-Every part of this project is sample code that guided me on how to do the following:
-
-* Initial Structure
-* Base-Object Pattern
-* Factory Pattern
-* Multiple Browser support
-* Page Navigation 
+Techstacks used:
+* Java, Maven with Selenium, TestNG, AllureReport libraries
+* Page Object Model
 * Dynamic Locator
-* ...and more
+* Custom reports
 
-## Techstack
-* Selenium WebDriver 4.16.1 for browser automation
-* TestNG 7.8.0 for test execution and parallel testing
-* log4j 5.1.1 for logging
 
-## Known issues (Work in progress)
-This framework is still ongoing. The Fullstack Selenium in Java course has not been completed yet.
+[//]: # (### Features )
+
+[//]: # (* Selenium WebDriver 4.16.1 Browser automation)
+
+[//]: # (* TestNG 7.8.0 for test execution and parallel testing)
+
+[//]: # (* log4j for comprehensive logging)
+
+[//]: # (* ReportNG 1.1.4 for detailed HTML reporting)
+
+[//]: # (* Cross-browser testing support)
+
+[//]: # (* Parallel test execution)
+
+[//]: # (* Cucumber 7.15.0 for BDD implementation)
+
+[//]: # (* WebDriverManager 5.6.3 for automated driver management)
+
+[//]: # (* Jackson for JSON data handling)
+
+[//]: # (* Maven for dependency management)
+
+[//]: # (* Screenshot capture on test failure)
+
+[//]: # (* Data-driven testing capabilities)
+
 
 
