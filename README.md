@@ -4,13 +4,16 @@ This repository contains the practice files that are part of the Fullstack Selen
 Powered by Java, Selenium with TestNG, and AllureReport, this project aims to validate functionalities including Signup, Login, Order, Search, and Sorting for https://demo.nopcommerce.com/
 
 Techstacks used:
-* Java, Maven with Selenium, TestNG, AllureReport libraries
+* Java 
+* Maven 
+* Selenium
+* TestNG
+* AllureReport 
+
+Features
 * Page Object Model
 * Dynamic Locator
 * Custom reports
-
-
-[//]: # (### Features )
 
 [//]: # (* Selenium WebDriver 4.16.1 Browser automation)
 
@@ -35,6 +38,10 @@ Techstacks used:
 [//]: # (* Screenshot capture on test failure)
 
 [//]: # (* Data-driven testing capabilities)
+
+## Reference
+Fullstack Selenium in Java (https://automationfc.vn/)
+
 
 
 
