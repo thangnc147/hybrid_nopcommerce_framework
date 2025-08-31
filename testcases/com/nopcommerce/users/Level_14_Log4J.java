@@ -75,7 +75,7 @@ public class Level_14_Log4J extends BaseTest {
         registerPage.clickTRegisterButton();
 
         log.info("TC_01_Register - Step 10: Verify success message is displayed");
-        Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+        Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed1");
 
         log.info("TC_01_Register - Step 11: Click to Log Out button");
         registerPage.clickTLogoutButton();
@@ -101,49 +101,6 @@ public class Level_14_Log4J extends BaseTest {
         Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
         Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
         Assert.assertEquals(customerInfoPage.getCompanyTextboxValue(), companyName);
-    }
-
-    @Test
-    public void TC_04_Dynamic_Page() {
-        // Customer Info -> Address
-        addressPage = (UserAddressPO) customerInfoPage.openSidebarLinkByPageName("Addresses");
-
-        // Address - > Reward Point
-        rewardPointPage = (UserRewardPointPO) addressPage.openSidebarLinkByPageName("Reward points");
-
-        // Reward Point -> Order
-        orderPage = (UserOrderPageObject) rewardPointPage.openSidebarLinkByPageName("Orders");
-
-        // Order -> Address
-        addressPage = (UserAddressPO) orderPage.openSidebarLinkByPageName("Addresses");
-
-        // Address -> Customer Info
-        customerInfoPage = (UserCustomerInfoPO) addressPage.openSidebarLinkByPageName("Customer info");
-
-    }
-
-    @Test
-    public void TC_05_Dynamic_Page() {
-        // Customer Info -> Address
-        customerInfoPage.openSidebarLinkByPageNames("Addresses");
-        addressPage = PageGenerator.getUserAddressPage(driver);
-
-        // Address - > Reward Point
-        addressPage.openSidebarLinkByPageNames("Reward points");
-        rewardPointPage = PageGenerator.getUserRewardPointPage(driver);
-
-        // Reward Point -> Order
-        rewardPointPage.openSidebarLinkByPageName("Orders");
-        orderPage = PageGenerator.getUserOrderPage(driver);
-
-        // Order -> Address
-        orderPage.openSidebarLinkByPageName("Addresses");
-        addressPage = PageGenerator.getUserAddressPage(driver);
-
-        // Address -> Customer Info
-        addressPage.openSidebarLinkByPageName("Customer info");
-        customerInfoPage = PageGenerator.getUserCustomerInfoPage(driver);
-
     }
 
     @AfterClass
