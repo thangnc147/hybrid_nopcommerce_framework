@@ -77,12 +77,14 @@ public class Level_14_Log4J extends BaseTest {
         log.info("TC_01_Register - Step 10: Verify success message is displayed");
         Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed1");
 
-        log.info("TC_01_Register - Step 11: Click to Log Out button");
-        registerPage.clickTLogoutButton();
+
     }
 
     @Test
     public void TC_02_Login() {
+        log.info("TC_02_Login - Step 00: Click to Log Out button");
+        registerPage.clickTLogoutButton();
+
         log.info("TC_02_Login - Step 01: Click to Log In button");
         loginPage = registerPage.clickTLoginButton();
 
