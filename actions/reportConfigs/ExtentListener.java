@@ -1,67 +1,67 @@
 package reportConfigs;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-import commons.GlobalConstants;
-import org.testng.*;
-import org.testng.xml.XmlSuite;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import commons.BaseTest;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
 
-public class ExtentListener implements IReporter {
-    private ExtentReports extent;
-    private ExtentTest test;
+public class ExtentListener extends BaseTest implements ITestListener {
+    private static ExtentReports extent = ExtentManager.createInstance();
+    private static ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
 
-    public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-        extent = new ExtentReports(GlobalConstants.EXTENT_PATH + "ExtentReport.html", true);
-        for (ISuite suite : suites) {
-            Map<String, ISuiteResult> result = suite.getResults();
+    @Override
+    public synchronized void onStart(ITestContext context) {
+    }
 
-            for (ISuiteResult r : result.values()) {
-                ITestContext context = r.getTestContext();
-                buildTestNodes(context.getPassedTests(), LogStatus.PASS);
-                buildTestNodes(context.getFailedTests(), LogStatus.FAIL);
-                buildTestNodes(context.getSkippedTests(), LogStatus.SKIP);
-            }
-        }
+    @Override
+    public synchronized void onFinish(ITestContext context) {
         extent.flush();
-        extent.close();
     }
 
-    private void buildTestNodes(IResultMap tests, LogStatus status) {
-        if (tests.size() > 0) {
-            for (ITestResult result : tests.getAllResults()) {
-                test = extent.startTest(result.getMethod().getMethodName());
+    @Override
+    public synchronized void onTestStart(ITestResult result) {
+        ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(), result.getMethod().getDescription());
+        test.set(extentTest);
+    }
 
-                test.setStartedTime(getTime(result.getStartMillis()));
-                test.setEndedTime(getTime(result.getEndMillis()));
+    @Override
+    public synchronized void onTestSuccess(ITestResult result) {
 
-                for (String group : result.getMethod().getGroups())
-                    test.assignCategory(group);
+        test.get().pass("Test passed");
+    }
 
-                if (result.getThrowable() != null) {
-                    test.log(status, result.getThrowable());
-                } else {
-                    test.log(status, "Test " + status.toString().toLowerCase() + "ed");
-                }
+    @Override
+    public synchronized void onTestFailure(ITestResult result) {
+        Object testClass = result.getInstance();
+        WebDriver driver = ((BaseTest) testClass).getDriver();
+        String base64Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 
-                extent.endTest(test);
-            }
+        try {
+            test.get().fail(result.getThrowable());
+            test.get().log(Status.FAIL, "Test failed", MediaEntityBuilder.createScreenCaptureFromBase64String(base64Screenshot).build());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
-    private Date getTime(long millis) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(millis);
-        return calendar.getTime();
+    @Override
+    public synchronized void onTestSkipped(ITestResult result) {
+        test.get().skip("Test skipped");
+        test.get().skip(result.getThrowable());
     }
 
-    public void extendLog(String message) {
-        test.log(LogStatus.INFO, message);
-        Reporter.log(message);
+    @Override
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+
     }
 }
