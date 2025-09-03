@@ -1,5 +1,6 @@
 package com.nopcommerce.users;
 
+import com.aventstack.extentreports.Status;
 import commons.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -14,23 +15,18 @@ import pageObjects.nopCommerce.externalUser.sidebar.UserAddressPO;
 import pageObjects.nopCommerce.externalUser.sidebar.UserCustomerInfoPO;
 import pageObjects.nopCommerce.externalUser.sidebar.UserOrderPageObject;
 import pageObjects.nopCommerce.externalUser.sidebar.UserRewardPointPO;
+import reportConfigs.ExtentManager;
 
 import java.lang.reflect.Method;
 
 public class Level_15_ExtentReport extends BaseTest {
 //    private WebDriver driver;
-    private UserHomePO homePage;
-    private UserLoginPageObject loginPage;
-    private UserRegisterPO registerPage;
-    private UserCustomerInfoPO customerInfoPage;
-    private UserAddressPO addressPage;
-    private UserOrderPageObject orderPage;
-    private UserRewardPointPO rewardPointPage;
-    String firstName, lastName, day, month, year, emailAddress, companyName, password;
+    String browserName;
 
     @Parameters("browser")
     @BeforeClass
     public void beforeClass(String browserName) {
+        this.browserName = browserName;
 
         driver = getBrowserDriver(browserName);
 
@@ -49,36 +45,36 @@ public class Level_15_ExtentReport extends BaseTest {
 
     @Test
     public void TC_01_Register(Method method) {
-//        ExtentManager.startTest(method.getName(), "TC_01_Register");
+        ExtentManager.startTest(method.getName() + "-" + this.browserName.toUpperCase(), "TC_01_Register");
 
-//        ExtentManager.getTest().log(LogStatus.INFO, "NewCustomer - Step 01: Open 'New Customer' Page");
+        ExtentManager.getTest().log(Status.INFO, "NewCustomer - Step 01: Open 'New Customer' Page");
         registerPage = homePage.clickToRegisterLink();
 
-//        ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 02: Click to Male radio button");
+        ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 02: Click to Male radio button");
         registerPage.clickToMaleRadio();
 
-//        ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 03: Input to FirstName textbox with value: " + firstName);
+        ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 03: Input to FirstName textbox with value: " + firstName);
         registerPage.enterToFirstNameTextbox(firstName);
 
-//        ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 04: Input to LastName textbox with value: " + lastName);
+        ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 04: Input to LastName textbox with value: " + lastName);
         registerPage.enterToLastNameTextbox(lastName);
 
-//        ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 05: Input to Email Address textbox with value: " + emailAddress);
+        ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 05: Input to Email Address textbox with value: " + emailAddress);
         registerPage.enterToEmailTextbox(emailAddress);
 
-//        ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 06: Input to Company Name textbox with value: " + companyName);
+        ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 06: Input to Company Name textbox with value: " + companyName);
         registerPage.enterToCompanyTextbox(companyName);
 
-//         ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 07: Input to Password textbox with value: " + password);
+         ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 07: Input to Password textbox with value: " + password);
         registerPage.enterToPasswordTextbox(password);
 
-//         ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 08: Input to Confirm Password textbox with value: " + password);
+         ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 08: Input to Confirm Password textbox with value: " + password);
         registerPage.enterToConfirmPasswordTextbox(password);
 
-//         ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 09: Click to Register button");
+         ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 09: Click to Register button");
         registerPage.clickTRegisterButton();
 
-//         ExtentManager.getTest().log(LogStatus.INFO,"TC_01_Register - Step 10: Verify success message is displayed");
+         ExtentManager.getTest().log(Status.INFO,"TC_01_Register - Step 10: Verify success message is displayed");
         Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed1");
 
 
@@ -86,26 +82,26 @@ public class Level_15_ExtentReport extends BaseTest {
 
     @Test
     public void TC_02_Login(Method method) {
-//        ExtentManager.startTest(method.getName(), "TC_02_Login");
-////        ExtentManager.getTest().log(LogStatus.INFO, "NewCustomer - Step 01: Open 'New Customer' Page");
+        ExtentManager.startTest(method.getName(), "TC_02_Login");
+//        ExtentManager.getTest().log(Status.INFO, "NewCustomer - Step 01: Open 'New Customer' Page");
 
-//         ExtentManager.getTest().log(LogStatus.INFO,"TC_02_Login - Step 00: Click to Log Out button");
+         ExtentManager.getTest().log(Status.INFO,"TC_02_Login - Step 00: Click to Log Out button");
         registerPage.clickTLogoutButton();
 
-//         ExtentManager.getTest().log(LogStatus.INFO,"TC_02_Login - Step 01: Click to Log In button");
+         ExtentManager.getTest().log(Status.INFO,"TC_02_Login - Step 01: Click to Log In button");
         loginPage = registerPage.clickTLoginButton();
 
-//         ExtentManager.getTest().log(LogStatus.INFO,"TC_02_Login - Step 02: Login to system with username " + emailAddress + "and password " + password);
+         ExtentManager.getTest().log(Status.INFO,"TC_02_Login - Step 02: Login to system with username " + emailAddress + "and password " + password);
         homePage = loginPage.loginToSystem(emailAddress, password);
 
-//         ExtentManager.getTest().log(LogStatus.INFO,"TC_02_Login - Step 03: Verify My Account page is displayed");
+         ExtentManager.getTest().log(Status.INFO,"TC_02_Login - Step 03: Verify My Account page is displayed");
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
     }
 
     @Test
     public void TC_03_My_Account(Method method) {
-//        ExtentManager.startTest(method.getName(), "TC_03_My_Account");
-////        ExtentManager.getTest().log(LogStatus.INFO, "NewCustomer - Step 01: Open 'New Customer' Page");
+        ExtentManager.startTest(method.getName(), "TC_03_My_Account");
+//        ExtentManager.getTest().log(Status.INFO, "NewCustomer - Step 01: Open 'New Customer' Page");
 
         customerInfoPage = homePage.clickToMyAccountLink();
 
@@ -120,4 +116,12 @@ public class Level_15_ExtentReport extends BaseTest {
         driver.quit();
     }
 
+    private UserHomePO homePage;
+    private UserLoginPageObject loginPage;
+    private UserRegisterPO registerPage;
+    private UserCustomerInfoPO customerInfoPage;
+    private UserAddressPO addressPage;
+    private UserOrderPageObject orderPage;
+    private UserRewardPointPO rewardPointPage;
+    String firstName, lastName, day, month, year, emailAddress, companyName, password;
 }
