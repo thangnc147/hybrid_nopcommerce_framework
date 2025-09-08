@@ -14,6 +14,7 @@ Features
 * Page Object Model
 * Dynamic Locator
 * Custom reports
+* Jira auto-create issues
 
 [//]: # (* Selenium WebDriver 4.16.1 Browser automation)
 
