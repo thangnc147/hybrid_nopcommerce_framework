@@ -259,23 +259,42 @@ public class BasePage {
         }
     }
 
-    public boolean isControlDisplayed(WebDriver driver, String locator) {
+    public void overrideGlobalTimeout(WebDriver driver, long timeInSecond) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeInSecond));
+    }
+
+    public boolean isElementDisplayed(WebDriver driver, String locator) {
         return getElement(driver, locator).isDisplayed();
     }
 
-    public boolean isControlDisplayed(WebDriver driver, String locator, String... restParameter) {
+    public boolean isElementDisplayed(WebDriver driver, String locator, String... restParameter) {
         return getElement(driver, castParameter(locator, restParameter)).isDisplayed();
     }
 
-    public boolean isControlSelected(WebDriver driver, String locator) {
+    public boolean isElementUndisplayed(WebDriver driver, String locator) {
+        overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+        List<WebElement> elements = getListElements(driver, locator);
+        overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+
+        if (elements.size() == 0) {
+            return true;
+        } else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean isElementSelected(WebDriver driver, String locator) {
         return getElement(driver, locator).isSelected();
     }
 
-    public boolean isControlSelected(WebDriver driver, String locator, String... restParameter) {
+    public boolean isElementSelected(WebDriver driver, String locator, String... restParameter) {
         return getElement(driver,castParameter(locator, restParameter)).isSelected();
     }
 
-    public boolean isControlEnabled(WebDriver driver, String locator) {
+    public boolean isElementEnabled(WebDriver driver, String locator) {
         return getElement(driver, locator).isEnabled();
     }
 

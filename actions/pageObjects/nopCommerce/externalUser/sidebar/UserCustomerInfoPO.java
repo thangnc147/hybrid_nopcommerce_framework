@@ -15,7 +15,7 @@ public class UserCustomerInfoPO extends UserSidebarPO {
     @Step("Verify Gender is selected Male option")
     public boolean isGenderMaleSelected() {
         waitForElementSelected(driver, UserCustomerInfoPageUI.GENDER_MALE_RADIO);
-        return isControlSelected(driver, UserCustomerInfoPageUI.GENDER_MALE_RADIO);
+        return isElementSelected(driver, UserCustomerInfoPageUI.GENDER_MALE_RADIO);
     }
 
     @Step("Get First Name value")

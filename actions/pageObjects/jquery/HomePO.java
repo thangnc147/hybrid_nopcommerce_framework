@@ -34,7 +34,7 @@ public class HomePO extends BasePage {
 
     public boolean isRowValueDisplayed(String females, String country, String males, String total) {
         waitForElementVisible(driver, HomePageUI.DYNAMIC_DATA_ON_ROW, females, country, males, total);
-        return isControlDisplayed(driver, HomePageUI.DYNAMIC_DATA_ON_ROW, females, country, males, total);
+        return isElementDisplayed(driver, HomePageUI.DYNAMIC_DATA_ON_ROW, females, country, males, total);
     }
 
     public void deleteRowByCountryName(String countryName) {
@@ -129,7 +129,7 @@ public class HomePO extends BasePage {
 
     public boolean isFileLoadedByName(String fileName) {
         waitForElementVisible(driver, HomePageUI.FILE_LOADED_BY_FILE_NAME, fileName);
-        return isControlDisplayed(driver, HomePageUI.FILE_LOADED_BY_FILE_NAME, fileName);
+        return isElementDisplayed(driver, HomePageUI.FILE_LOADED_BY_FILE_NAME, fileName);
     }
 
     public void clickToUploadButton(WebDriver driver) {
@@ -141,6 +141,6 @@ public class HomePO extends BasePage {
 
     public boolean isFileUploadedByName(String fileName) {
         waitForElementVisible(driver, HomePageUI.FILE_UPLOADED_BY_FILE_NAME, fileName);
-        return isControlDisplayed(driver, HomePageUI.FILE_UPLOADED_BY_FILE_NAME, fileName);
+        return isElementDisplayed(driver, HomePageUI.FILE_UPLOADED_BY_FILE_NAME, fileName);
     }
 }

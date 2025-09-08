@@ -78,7 +78,7 @@ public class Level_02_BasePage_I_Initial {
         basePage.waitForElementClickable(driver, "//button[text()='Log in']");
         basePage.clickToElement(driver, "//button[text()='Log in']");
 
-        Assert.assertTrue(basePage.isControlDisplayed(driver, "//a[@class='ico-account' and text()='My account']"));
+        Assert.assertTrue(basePage.isElementDisplayed(driver, "//a[@class='ico-account' and text()='My account']"));
     }
 
     @Test
@@ -86,7 +86,7 @@ public class Level_02_BasePage_I_Initial {
         basePage.waitForElementClickable(driver, "//a[@class='ico-account']");
         basePage.clickToElement(driver, "//a[@class='ico-account']");
 
-        Assert.assertTrue(basePage.isControlSelected(driver, "//input[@id='gender-male']"));
+        Assert.assertTrue(basePage.isElementSelected(driver, "//input[@id='gender-male']"));
 
         Assert.assertEquals(basePage.getAttributeValue(driver, "//input[@id='FirstName']", "value"), firstName);
         Assert.assertEquals(basePage.getAttributeValue(driver, "//input[@id='LastName']", "value"), lastName);
