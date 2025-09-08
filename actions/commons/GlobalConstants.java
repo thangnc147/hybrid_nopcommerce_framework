@@ -25,7 +25,7 @@ public class GlobalConstants {
 
 
     // Wait Info
-    public static final long SHORT_TIMEOUT = 10;
+    public static final long SHORT_TIMEOUT = 5;
     public static final long LONG_TIMEOUT = 30;
 
     // Download-Upload file

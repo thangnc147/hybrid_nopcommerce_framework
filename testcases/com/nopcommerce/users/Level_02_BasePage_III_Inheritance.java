@@ -75,7 +75,7 @@ public class Level_02_BasePage_III_Inheritance extends BasePage {
         waitForElementClickable(driver, "//button[text()='Log in']");
         clickToElement(driver, "//button[text()='Log in']");
 
-        Assert.assertTrue(isControlDisplayed(driver, "//a[@class='ico-account' and text()='My account']"));
+        Assert.assertTrue(isElementDisplayed(driver, "//a[@class='ico-account' and text()='My account']"));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class Level_02_BasePage_III_Inheritance extends BasePage {
         waitForElementClickable(driver, "//a[@class='ico-account']");
         clickToElement(driver, "//a[@class='ico-account']");
 
-        Assert.assertTrue(isControlSelected(driver, "//input[@id='gender-male']"));
+        Assert.assertTrue(isElementSelected(driver, "//input[@id='gender-male']"));
 
         Assert.assertEquals(getAttributeValue(driver, "//input[@id='FirstName']", "value"), firstName);
         Assert.assertEquals(getAttributeValue(driver, "//input[@id='LastName']", "value"), lastName);
