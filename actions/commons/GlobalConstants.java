@@ -49,4 +49,10 @@ public class GlobalConstants {
     // Data Test/ Environment
     public static final String DATA_TEST_PATH = PROJECT_PATH + SEPARATOR + "dataTest" + SEPARATOR;
     public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + SEPARATOR + "environmentConfig" + SEPARATOR;
+
+    // Jira Configuration
+    public static final String JIRA_SITE_URL = "https://thangnguyen1407.atlassian.net/";
+    public static final String JIRA_USERNAME = "thangnguyen.tsp@gmail.com";
+    public static final String JIRA_API_KEY = "ATATT3xFfGF0EJtoU1L2NpO3_8slEwk2E-OvvYiDYueqgEhdn6rbwTazQV5zAvt09LjD_dd2lWJ0xDvLKgwfhzkTVjVtFm1oNNfR6E7JPS9T7nbJvx2CRIUXJoVppO8y76zUU2ZykBPAJLVYVTMkGz702MOaw5kG5AwG00oB3gfnN0j54G3on1E=F79D599E";
+    public static final String JIRA_PROJECT_KEY = "AUTOMATION";
 }

@@ -20,5 +20,6 @@
     <orderEntry type="library" name="reportng" level="project" />
     <orderEntry type="library" name="allure" level="project" />
     <orderEntry type="library" name="extent5" level="project" />
+    <orderEntry type="library" name="jira" level="project" />
   </component>
 </module>
