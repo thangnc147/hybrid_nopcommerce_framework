@@ -26,6 +26,14 @@ public class BasePage {
 //        this.driver;
 //    }
 
+    public void sleepInSeconds(long timeInSecond) {
+        try {
+            Thread.sleep(timeInSecond * 1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     // Encapsulation
     public static BasePage getBasePage() {
         return new BasePage();
@@ -117,10 +125,10 @@ public class BasePage {
     }
 
     // Web Element Function
-
     private By getByXpath(String locator) {
         return By.xpath(locator);
     }
+
 
     private String castParameter(String locator, String... restParameter) {
         return String.format(locator, (Object[]) restParameter);
@@ -156,6 +164,17 @@ public class BasePage {
 
     protected List<WebElement> getListElements(WebDriver driver, String locator, String... restParameter) {
         return driver.findElements(getByLocator(castParameter(locator, restParameter)));
+    }
+
+    public Set<Cookie> getALlCookies(WebDriver driver) {
+        return driver.manage().getCookies();
+    }
+
+    public void setCookies(WebDriver driver, Set<Cookie> cookies) {
+        for (Cookie cookie : cookies){
+            driver.manage().addCookie(cookie);
+        }
+        sleepInSeconds(3);
     }
 
     public void clickToElement(WebDriver driver, String locator) {
