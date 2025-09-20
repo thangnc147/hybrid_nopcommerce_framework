@@ -14,6 +14,7 @@ import pageObjects.nopCommerce.externalUser.sidebar.UserRewardPointPO;
 import pageUIs.jquery.HomePageUI;
 import pageUIs.nopCommerce.BasePageUI;
 import pageUIs.nopCommerce.externalUser.UserSidebarPageUI;
+import pageUIs.orangehrm.BasePUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -490,9 +491,10 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locator)));
     }
 
-//    public void waitForListElementInvisible(WebDriver driver, String locator) {
-//        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locator)));
-//    }
+    public boolean waitForListElementInvisible(WebDriver driver, String locator) {
+        return new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions
+                .invisibilityOfAllElements(getListElements(driver, locator)));
+    }
 
     public void waitForElementPresence(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.presenceOfElementLocated(getByLocator(locator)));
@@ -575,5 +577,10 @@ public class BasePage {
     public boolean isCheckboxSelectedByID(WebDriver driver, String checkboxId) {
         waitForElementSelected(driver, BasePageUI.RADIO_BUTTON_BY_ID, checkboxId);
         return isElementSelected(driver, BasePageUI.RADIO_BUTTON_BY_ID, checkboxId);
+    }
+
+    /* Only using for OragneHRM Porject */
+    public boolean waitAllLoadingIconInvisible(WebDriver driver) {
+        return waitForListElementInvisible(driver, BasePUI.LOADING_ICON);
     }
 }
