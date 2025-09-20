@@ -38,7 +38,7 @@ public class AddEmployeePO extends BasePage {
     }
 
     @Step("Click to Save button to create new Employee record")
-    public EmployeePersonalDetailsPO clickToSaveButton() {
+    public EmployeePersonalDetailsPO clickToSaveButtonAtEmployeeCreation() {
         waitForElementClickable(driver, AddEmployeePUI.SAVE_BUTTON_AT_ADD_EMPLOYEE_CONTAINER);
         clickToElement(driver, AddEmployeePUI.SAVE_BUTTON_AT_ADD_EMPLOYEE_CONTAINER);
 

@@ -134,7 +134,7 @@ public class BaseTest {
     @BeforeSuite
     public void deleteFileInReport() {
         // Remove all file in ReportNG screenshot (image)
-        deleteAllFileInFolder("reportNGImage");
+//        deleteAllFileInFolder("reportNGImage");
 
         // Remove all file in Allure attachment (json file)
         deleteAllFileInFolder("allure-results");

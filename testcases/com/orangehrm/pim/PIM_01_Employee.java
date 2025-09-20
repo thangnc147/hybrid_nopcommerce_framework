@@ -5,6 +5,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -26,8 +27,9 @@ public class PIM_01_Employee extends BaseTest {
     private EmployeePersonalDetailsPO personalDetailsPage;
     private EmergencyContactsPO emergencyContactsPage;
     private ContactDetailsPO contactDetailsPage;
-    String usernsame, password;
-    String firstName, middleName, lastName, employeeId;
+    private String usernsame, password;
+    private String firstName, middleName, lastName, employeeId;
+    private String avatarImageName;
 
     @Parameters({"browser", "userUrl"})
     @BeforeClass
@@ -42,6 +44,8 @@ public class PIM_01_Employee extends BaseTest {
         firstName = "Thang";
         middleName = "Employee" + generateRandomNumber();
         lastName = "Nguyen";
+
+        avatarImageName = "Image02.png";
 
         loginPage.enterToUsernameTextbox(usernsame);
         loginPage.enterToPasswordTextbox(password);
@@ -62,7 +66,7 @@ public class PIM_01_Employee extends BaseTest {
         addEmployeePage.enterToLastNameTextbox(lastName);
         employeeId = addEmployeePage.getEmployeeId();
 
-        personalDetailsPage = addEmployeePage.clickToSaveButton();
+        personalDetailsPage = addEmployeePage.clickToSaveButtonAtEmployeeCreation();
 
         Assert.assertEquals(personalDetailsPage.getPageTitle(), "Personal Details");
 
@@ -75,14 +79,30 @@ public class PIM_01_Employee extends BaseTest {
         Assert.assertEquals(personalDetailsPage.getEmployeeId(), employeeId);
     }
 
-//    @Description("Upload Avatar for Employee record")
-//    @Severity(SeverityLevel.NORMAL)
-////    @Test
-//    public void Employee_02_Upload_Avatar() {
-//
-//
-//    }
-//
+    @Description("Upload Avatar for Employee record")
+    @Severity(SeverityLevel.NORMAL)
+    @Test
+    public void Employee_02_Upload_Avatar() {
+        personalDetailsPage.clickToEmployeeAvatarImage();
+
+        // Get height/width of current avatar (Before Upload)
+        Dimension beforeUpload = personalDetailsPage.getAvatarSize();
+        System.out.println("Before Upload Size: " + beforeUpload);
+
+        personalDetailsPage.loadAvatarImage(avatarImageName);
+
+        personalDetailsPage.clickToSaveButtonAtChangeProfilePicture();
+
+        // Verify Success Message showing
+        personalDetailsPage.isSuccessMessageDisplayed();
+
+        // Verify system done loading
+        personalDetailsPage.waitAllLoadingIconInvisible(driver);
+
+        // Verify new avatar show up
+        Assert.assertTrue(personalDetailsPage.isProfileAvatarUpdatedSuccess(beforeUpload));
+    }
+
 //    @Test
 //    public void Employee_03_Personal_Details() {
 //
