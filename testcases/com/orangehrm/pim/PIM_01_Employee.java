@@ -1,6 +1,10 @@
 package com.orangehrm.pim;
 
 import commons.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -12,13 +16,14 @@ import pageObjects.orangehrm.LoginPO;
 import pageObjects.orangehrm.PageGenerator;
 import pageObjects.orangehrm.pim.employee.*;
 
+@Feature("Employee Management")
 public class PIM_01_Employee extends BaseTest {
     private WebDriver driver;
     private LoginPO loginPage;
     private DashboardPO dashboardPage;
     private AddEmployeePO addEmployeePage;
     private EmployeeListPO employeeListPage;
-    private EmployeePersonalDetailsPO PersonalDetailsPage;
+    private EmployeePersonalDetailsPO personalDetailsPage;
     private EmergencyContactsPO emergencyContactsPage;
     private ContactDetailsPO contactDetailsPage;
     String usernsame, password;
@@ -43,8 +48,11 @@ public class PIM_01_Employee extends BaseTest {
         dashboardPage = loginPage.clickToLoginButton();
     }
 
+    @Description("Add a new Employee record")
+    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void Employee_01_Add_New() {
+        // Wait all loading is done
         employeeListPage = dashboardPage.clickToPIMButton();
 
         addEmployeePage = employeeListPage.clickToAddEmployeeButton();
@@ -54,16 +62,22 @@ public class PIM_01_Employee extends BaseTest {
         addEmployeePage.enterToLastNameTextbox(lastName);
         employeeId = addEmployeePage.getEmployeeId();
 
-        PersonalDetailsPage = addEmployeePage.clickToSaveButton();
+        personalDetailsPage = addEmployeePage.clickToSaveButton();
 
-        Assert.assertEquals(PersonalDetailsPage.getPageTitle(), "Personal Details");
-        Assert.assertEquals(PersonalDetailsPage.getFirstNameText(), firstName);
-        Assert.assertEquals(PersonalDetailsPage.getMiddleNameText(), middleName);
-        Assert.assertEquals(PersonalDetailsPage.getLastNameText(), lastName);
-        Assert.assertEquals(PersonalDetailsPage.getEmployeeId(), employeeId);
+        Assert.assertEquals(personalDetailsPage.getPageTitle(), "Personal Details");
+
+        // Wait for second Loading Icon After create
+        personalDetailsPage.waitAllLoadingIconInvisible(driver);
+
+        Assert.assertEquals(personalDetailsPage.getFirstNameText(), firstName);
+        Assert.assertEquals(personalDetailsPage.getMiddleNameText(), middleName);
+        Assert.assertEquals(personalDetailsPage.getLastNameText(), lastName);
+        Assert.assertEquals(personalDetailsPage.getEmployeeId(), employeeId);
     }
 
-//    @Test
+//    @Description("Upload Avatar for Employee record")
+//    @Severity(SeverityLevel.NORMAL)
+////    @Test
 //    public void Employee_02_Upload_Avatar() {
 //
 //
