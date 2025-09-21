@@ -403,6 +403,10 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", getElement(driver, locator));
     }
 
+    public void clickToElementTopByJS(WebDriver driver, String locator, String... restParameter) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", getElement(driver, castParameter(locator, restParameter)));
+    }
+
     public void scrollToBottomPageByJS(WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,document.body.scrollHeight)");
     }
@@ -586,5 +590,10 @@ public class BasePage {
     /* Only using for OragneHRM Porject */
     public boolean waitAllLoadingIconInvisible(WebDriver driver) {
         return waitForListElementInvisible(driver, BasePUI.LOADING_ICON);
+    }
+
+    public boolean isSuccessMessageDisplayed(WebDriver driver) {
+        waitForElementVisible(driver, BasePUI.SUCCESS_MESSAGE);
+        return isElementDisplayed(driver, BasePUI.SUCCESS_MESSAGE);
     }
 }

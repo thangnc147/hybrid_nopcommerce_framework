@@ -3,6 +3,9 @@ package pageObjects.orangehrm;
 import org.openqa.selenium.WebDriver;
 import pageObjects.orangehrm.pim.configurations.*;
 import pageObjects.orangehrm.pim.employee.*;
+import pageObjects.orangehrm.pim.employee.detailsTab.ContactDetailsPO;
+import pageObjects.orangehrm.pim.employee.detailsTab.EmergencyContactsPO;
+import pageObjects.orangehrm.pim.employee.detailsTab.EmployeePersonalDetailsPO;
 import pageObjects.orangehrm.pim.reports.AddReportPO;
 import pageObjects.orangehrm.pim.reports.ReportListPO;
 

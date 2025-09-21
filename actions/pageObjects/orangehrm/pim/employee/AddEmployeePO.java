@@ -4,6 +4,7 @@ import commons.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageObjects.orangehrm.PageGenerator;
+import pageObjects.orangehrm.pim.employee.detailsTab.EmployeePersonalDetailsPO;
 import pageUIs.orangehrm.pim.employee.AddEmployeePUI;
 
 public class AddEmployeePO extends BasePage {
