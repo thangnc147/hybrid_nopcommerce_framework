@@ -9,28 +9,28 @@
     <parameter name="userUrl" value="http://localhost:80/"/>
     <parameter name="adminUrl" value="http://localhost:80/"/>
 
-        <test name="Run on chrome" preserve-order="true">
-            <parameter name="browser" value="chrome"/>
+        <test name="Run on Headless Chrome" preserve-order="true">
+            <parameter name="browser" value="hchrome"/>
             <classes>
-                <class name="com.nopcommerce.common.Login" />
-                <class name="com.nopcommerce.users.Level_20_Share_State" />
+<!--                <class name="com.nopcommerce.common.Login" />-->
+                <class name="com.nopcommerce.users.Level_21_Browser_Config" />
             </classes>
         </test>
 
-    <!--    <test name="Run on firefox">-->
-    <!--        <parameter name="browser" value="firefox"/>-->
-    <!--        <classes>-->
-    <!--            <class name="com.nopcommerce.common.Login" />-->
-    <!--            <class name="com.nopcommerce.users.Level_20_Share_State" />-->
-    <!--        </classes>-->
-    <!--    </test>-->
+        <test name="Run on Headless Firefox">
+            <parameter name="browser" value="hfirefox"/>
+            <classes>
+<!--                <class name="com.nopcommerce.common.Login" />-->
+                <class name="com.nopcommerce.users.Level_21_Browser_Config" />
+            </classes>
+        </test>
 
-    <!--        <test name="Run on Edge">-->
-    <!--            <parameter name="browser" value="edge"/>-->
-    <!--            <classes>-->
-    <!--                <class name="com.nopcommerce.common.Login" />-->
-    <!--                <class name="com.nopcommerce.users.Level_20_Share_State" />-->
-    <!--            </classes>-->
-    <!--        </test>-->
+<!--            <test name="Run on Headless Edge">-->
+<!--                <parameter name="browser" value="hedge"/>-->
+<!--                <classes>-->
+<!--                    <class name="com.nopcommerce.common.Login" />-->
+<!--                    <class name="com.nopcommerce.users.Level_21_Browser_Config" />-->
+<!--                </classes>-->
+<!--            </test>-->
 
 </suite>

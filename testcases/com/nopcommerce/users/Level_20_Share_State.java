@@ -56,16 +56,6 @@ public class Level_20_Share_State extends BaseTest {
         Assert.assertEquals(customerInfoPage.getTextboxValueByID(driver, "Company"), companyName);
     }
 
-//    @Test
-//    public void TC_02_Payment() {
-//
-//    }
-//
-//    @Test
-//    public void TC_03_My_Order() {
-//
-//    }
-
     @AfterClass (alwaysRun = true)
     public void afterClass() {
         closeBrowserDriver();
