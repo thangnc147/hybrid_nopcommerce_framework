@@ -10,7 +10,7 @@
     <parameter name="adminUrl" value="http://localhost:80/"/>
 
         <test name="Run on Headless Chrome" preserve-order="true">
-            <parameter name="browser" value="hchrome"/>
+            <parameter name="browser" value="chrome"/>
             <classes>
 <!--                <class name="com.nopcommerce.common.Login" />-->
                 <class name="com.nopcommerce.users.Level_21_Browser_Config" />
@@ -18,7 +18,7 @@
         </test>
 
         <test name="Run on Headless Firefox">
-            <parameter name="browser" value="hfirefox"/>
+            <parameter name="browser" value="firefox"/>
             <classes>
 <!--                <class name="com.nopcommerce.common.Login" />-->
                 <class name="com.nopcommerce.users.Level_21_Browser_Config" />
