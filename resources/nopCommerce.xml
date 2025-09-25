@@ -9,21 +9,21 @@
     <parameter name="userUrl" value="http://localhost:80/"/>
     <parameter name="adminUrl" value="http://localhost:80/"/>
 
-        <test name="Run on Headless Chrome" preserve-order="true">
+        <test name="Run on Chrome">
             <parameter name="browser" value="chrome"/>
             <classes>
 <!--                <class name="com.nopcommerce.common.Login" />-->
-                <class name="com.nopcommerce.users.Level_21_Browser_Config" />
+                <class name="com.nopcommerce.users.Level_22_Manage_Data_Internal" />
             </classes>
         </test>
 
-        <test name="Run on Headless Firefox">
-            <parameter name="browser" value="firefox"/>
-            <classes>
+<!--        <test name="Run on Headless Firefox">-->
+<!--            <parameter name="browser" value="firefox"/>-->
+<!--            <classes>-->
 <!--                <class name="com.nopcommerce.common.Login" />-->
-                <class name="com.nopcommerce.users.Level_21_Browser_Config" />
-            </classes>
-        </test>
+<!--                <class name="com.nopcommerce.users.Level_22_Manage_Data_Internal" />-->
+<!--            </classes>-->
+<!--        </test>-->
 
 <!--            <test name="Run on Headless Edge">-->
 <!--                <parameter name="browser" value="hedge"/>-->

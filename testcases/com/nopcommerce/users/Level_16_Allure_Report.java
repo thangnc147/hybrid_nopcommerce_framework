@@ -105,8 +105,5 @@ public class Level_16_Allure_Report extends BaseTest {
     private UserLoginPageObject loginPage;
     private UserRegisterPO registerPage;
     private UserCustomerInfoPO customerInfoPage;
-    private UserAddressPO addressPage;
-    private UserOrderPageObject orderPage;
-    private UserRewardPointPO rewardPointPage;
     String firstName, lastName, day, month, year, emailAddress, companyName, password;
 }
