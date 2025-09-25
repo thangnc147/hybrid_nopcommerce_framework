@@ -1,0 +1,10 @@
+{
+  "firstName" : "Thang",
+  "lastName" : "Nguyen",
+  "day" : "10",
+  "month" : "July",
+  "year" : "1999",
+  "emailAddress" : "thang",
+  "companyName" : "Thang Company",
+  "password" : "ThangPassword"
+}
