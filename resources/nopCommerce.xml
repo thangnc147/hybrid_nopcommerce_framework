@@ -13,7 +13,7 @@
             <parameter name="browser" value="chrome"/>
             <classes>
 <!--                <class name="com.nopcommerce.common.Login" />-->
-                <class name="com.nopcommerce.users.Level_23_Data_Driven_JSON" />
+                <class name="com.nopcommerce.users.Level_23_Data_Driven_Excel" />
             </classes>
         </test>
 

@@ -22,5 +22,6 @@
     <orderEntry type="library" name="allure" level="project" />
     <orderEntry type="library" name="extent5" level="project" />
     <orderEntry type="library" name="jira" level="project" />
+    <orderEntry type="library" name="POI" level="project" />
   </component>
 </module>
