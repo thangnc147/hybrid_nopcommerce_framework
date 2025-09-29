@@ -23,5 +23,6 @@
     <orderEntry type="library" name="extent5" level="project" />
     <orderEntry type="library" name="jira" level="project" />
     <orderEntry type="library" name="POI" level="project" />
+    <orderEntry type="library" name="owner-1.0.12" level="project" />
   </component>
 </module>

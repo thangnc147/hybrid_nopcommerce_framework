@@ -13,7 +13,7 @@
             <parameter name="browser" value="chrome"/>
             <classes>
 <!--                <class name="com.nopcommerce.common.Login" />-->
-                <class name="com.nopcommerce.users.Level_24_Multiple_Env_01_Java_Properties" />
+                <class name="com.nopcommerce.users.Level_24_Multiple_Env_02_Owner_Lib" />
             </classes>
         </test>
 
