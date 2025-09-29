@@ -5,6 +5,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import jsonData.nopCommerce.UserInfoByJson;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,28 +16,30 @@ import pageObjects.nopCommerce.externalUser.UserHomePO;
 import pageObjects.nopCommerce.externalUser.UserLoginPageObject;
 import pageObjects.nopCommerce.externalUser.UserRegisterPO;
 import pageObjects.nopCommerce.externalUser.sidebar.UserCustomerInfoPO;
-import utilities.ExcelConfig;
+import utilities.PropertiesConfig;
 
 @Feature("User")
-public class Level_23_Data_Driven_Excel extends BaseTest {
+public class Level_24_Multiple_Env_01_Java_Properties extends BaseTest {
     @Parameters({"browser","environment"})
     @BeforeClass
     public void beforeClass(String browserName, String envName) {
-        driver = getBrowserDriverFromPropertiy(browserName, envName);
+        propertiesConfig = PropertiesConfig.getProperties(envName);
+        System.out.println(propertiesConfig.getApplicationUrl());
+        driver = getBrowserDriver(browserName, propertiesConfig.getApplicationUrl());
 
         homePage = PageGenerator.getUserHomePage(driver);
 
-        excelConfig = ExcelConfig.getExcelData();
-        excelConfig.switchToSheet("User Data");
+        userInfo = UserInfoByJson.getUserInfo();
 
-        firstName = excelConfig.getCellData("firstName", 1);
-        lastName = excelConfig.getCellData("lastName", 1);
-        day = excelConfig.getCellData("day", 1);
-        month = excelConfig.getCellData("month", 1);
-        year = excelConfig.getCellData("year", 1);
-        emailAddress = excelConfig.getCellData("emailAddress", 1) + generateRandomNumber() + "@gmail.ccoommm";
-        companyName = excelConfig.getCellData("companyName", 1);
-        password = excelConfig.getCellData("password", 1);
+        firstName = userInfo.getFirstName();
+        lastName = userInfo.getLastName();
+        day = userInfo.getDay();
+        month = userInfo.getMonth();
+        year = userInfo.getYear();
+        emailAddress = userInfo.getEmailAddress() + generateRandomNumber() + "@gmail.ccoommm";
+        userInfo.setEmailAddress(emailAddress);
+        companyName = userInfo.getCompanyName();
+        password = userInfo.getPassword();
     }
 
     @Description("Register a new account")
@@ -98,11 +101,12 @@ public class Level_23_Data_Driven_Excel extends BaseTest {
     }
 
     private WebDriver driver;
+    private PropertiesConfig propertiesConfig;
     private UserHomePO homePage;
     private UserLoginPageObject loginPage;
     private UserRegisterPO registerPage;
     private UserCustomerInfoPO customerInfoPage;
-    private ExcelConfig excelConfig;
+    private UserInfoByJson userInfo;
     private String firstName, lastName, day, month, year, emailAddress, companyName, password;
 
 }

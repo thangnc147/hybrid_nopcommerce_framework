@@ -8,14 +8,14 @@ public class GlobalConstants {
     public static final String JAVA_VERSION = System.getProperty("java.version");
 
     // App Info: User
-    public static final String DEV_USER_URL = "http://localhost/";
-    public static final String STAGING_USER_URL = "https://user-staging.nopcommerce.com/";
-    public static final String LIVE_USER_URL = "https://user-live.nopcommerce.com/";
+    public static final String DEV_USER_URL = "https://user-dev.nopcommerce.com/";
+    public static final String QA_USER_URL = "http://localhost/";
+    public static final String UAT_USER_URL = "https://user-uat.nopcommerce.com/";
 
     // App Info: Admin
-    public static final String DEV_ADMIN_URL = "http://localhost/admin";
-    public static final String STAGING_ADMIN_URL = "https://admin-staging.nopcommerce.com/";
-    public static final String LIVE_ADMIN_URL = "https://admin-live.nopcommerce.com/";
+    public static final String DEV_ADMIN_URL = "https://admin-dev.nopcommerce.com/";
+    public static final String QA_ADMIN_URL = "https://admin-qa.nopcommerce.com/";
+    public static final String UAT_ADMIN_URL = "https://admin-uat.nopcommerce.com/";
     public static final String ADMIN_USERNAME = "";
     public static final String ADMIN_PASSWORD = "";
 

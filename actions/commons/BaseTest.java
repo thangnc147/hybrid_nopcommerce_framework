@@ -75,8 +75,53 @@ public class BaseTest {
         return driver;
     }
 
+    protected WebDriver getBrowserDriver(String browserName, String url) {
+        BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+        switch (browserList) {
+            case FIREFOX:
+                FirefoxDriverService firefoxService = new GeckoDriverService.Builder().withLogFile(
+                        new File(GlobalConstants.BROWSER_LOG_PATH + "FirefoxLog.log")).build();
+                driver = new FirefoxDriver(firefoxService);
+                break;
+            case CHROME:
+                ChromeDriverService chromeService = new ChromeDriverService.Builder().withLogFile(
+                        new File(GlobalConstants.BROWSER_LOG_PATH + "ChromeLog.log")).build();
+                driver = new ChromeDriver(chromeService);
+                break;
+            case EDGE:
+                EdgeDriverService edgeService = new EdgeDriverService.Builder().withLogFile(
+                        new File(GlobalConstants.BROWSER_LOG_PATH + "EdgeLog.log")).build();
+                driver = new EdgeDriver();
+                break;
+            case HFIREFOX:
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("-headless");
+                firefoxOptions.addArguments("window-size=1920x1090");
+                driver = new FirefoxDriver(firefoxOptions);
+                break;
+            case HCHROME:
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("window-size=1920x1090");
+                driver = new ChromeDriver(chromeOptions);
+                break;
+            case HEDGE:
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--headless");
+                edgeOptions.addArguments("window-size=1920x1090");
+                driver = new EdgeDriver(edgeOptions);
+                break;
+            default:
+                throw new RuntimeException("Browser name is not valid");
+        }
 
-    protected WebDriver getBrowserDriver(String browserName, String envName) {
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.get(url);
+        return driver;
+    }
+
+    protected WebDriver getBrowserDriverFromPropertiy(String browserName, String envName) {
         BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
         switch (browserList) {
             case FIREFOX:
@@ -127,15 +172,15 @@ public class BaseTest {
         switch (environment) {
             case DEV:
                 // example
-                envName = "http://dev.localhost:80/";
+                envName = GlobalConstants.DEV_USER_URL;
                 break;
             case QA:
                 // example
-                envName = "http://localhost:80/";
+                envName = GlobalConstants.QA_USER_URL;
                 break;
             case UAT:
                 // example
-                envName = "http://uat.localhost:80/";
+                envName = GlobalConstants.UAT_USER_URL;
                 break;
             default:
                 new IllegalArgumentException("Unexpected value: " + envName);
