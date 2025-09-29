@@ -76,7 +76,7 @@ public class BaseTest {
     }
 
 
-    protected WebDriver getBrowserDriver(String browserName, String url) {
+    protected WebDriver getBrowserDriver(String browserName, String envName) {
         BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
         switch (browserList) {
             case FIREFOX:
@@ -118,8 +118,29 @@ public class BaseTest {
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
-        driver.get(url);
+        driver.get(getUrlByEnvironmentName(envName));
         return driver;
+    }
+
+    public String getUrlByEnvironmentName(String envName) {
+        EnvironmentList environment = EnvironmentList.valueOf(envName.toUpperCase());
+        switch (environment) {
+            case DEV:
+                // example
+                envName = "http://dev.localhost:80/";
+                break;
+            case QA:
+                // example
+                envName = "http://localhost:80/";
+                break;
+            case UAT:
+                // example
+                envName = "http://uat.localhost:80/";
+                break;
+            default:
+                new IllegalArgumentException("Unexpected value: " + envName);
+        }
+        return envName;
     }
 
     public static void quit(WebDriver driver) {

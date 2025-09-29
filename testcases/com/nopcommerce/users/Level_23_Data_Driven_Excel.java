@@ -19,7 +19,7 @@ import utilities.ExcelConfig;
 
 @Feature("User")
 public class Level_23_Data_Driven_Excel extends BaseTest {
-    @Parameters({"browser","userUrl"})
+    @Parameters({"browser","environment"})
     @BeforeClass
     public void beforeClass(String browserName, String userUrl) {
         driver = getBrowserDriver(browserName, userUrl);
